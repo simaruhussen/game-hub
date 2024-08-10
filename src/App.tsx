@@ -12,6 +12,7 @@ import { MdPadding } from "react-icons/md";
    export interface GameQuery{
     genre:Genre|null;
     platform:platform|null;
+    sortOrder:string;
    }
 function App() {
   const [gameQuery,setGameQuery]=useState<GameQuery>({} as GameQuery)
@@ -36,7 +37,7 @@ function App() {
       <GridItem area="main" >
         <HStack spacing={5} paddingLeft="2" marginBottom={5}>
         <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery,platform})}/>
-          <SortSelector/>
+          <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder)=>setGameQuery({...gameQuery,sortOrder})}/>
           </HStack>
         <GameGrid gameQuery={gameQuery}/>
       </GridItem>
